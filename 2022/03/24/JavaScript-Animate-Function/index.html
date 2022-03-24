@@ -22,7 +22,7 @@
 
   
 
-  <title>Hello World | chaichai.top</title>
+  <title>JavaScript Animate Function | chaichai.top</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Hello World</h1>
+          <h1 class="title-wrap">JavaScript Animate Function</h1>
           <h2 class="title-sub-wrap">
             <strong>Chai chai</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-12-03T17:42:02.632Z" itemprop="datePublished">2021-12-04</time>
+            <time  class="article-date" datetime="2022-03-24T14:59:49.827Z" itemprop="datePublished">2022-03-24</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,19 +129,38 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>​        缓动动画原理：移动的像素慢慢减少，让效果看起来更柔和更美观，通过定时器加回调函数，实现动画效果以及更多具体功能</p>
+<hr>
+<h2 id="实现过程分析："><a href="#实现过程分析：" class="headerlink" title="实现过程分析："></a>实现过程分析：</h2><h3 id="（1）如何重复调用？"><a href="#（1）如何重复调用？" class="headerlink" title="（1）如何重复调用？"></a>（1）如何重复调用？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">答：封装一个名为animate函数，实现重复调用</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">obj, target, callback</span>) </span>&#123; <span class="comment">//详细实现功能代码 &#125;;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h6 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h6><h6 id="animate：动画函数"><a href="#animate：动画函数" class="headerlink" title="animate：动画函数"></a>animate：动画函数</h6><h6 id="obj：动画对象-gt-给谁添加动画效果"><a href="#obj：动画对象-gt-给谁添加动画效果" class="headerlink" title="obj：动画对象 -&gt; 给谁添加动画效果"></a>obj：动画对象 -&gt; 给谁添加动画效果</h6><h6 id="target：目标值-gt-移动到什么距离"><a href="#target：目标值-gt-移动到什么距离" class="headerlink" title="target：目标值 -&gt; 移动到什么距离"></a>target：目标值 -&gt; 移动到什么距离</h6><h6 id="callback：回调函数-gt-同时要执行什么功能"><a href="#callback：回调函数-gt-同时要执行什么功能" class="headerlink" title="callback：回调函数 -&gt; 同时要执行什么功能"></a>callback：回调函数 -&gt; 同时要执行什么功能</h6><hr>
+<h3 id="（2）如何实现缓动效果？（缓动动画核心算法）"><a href="#（2）如何实现缓动效果？（缓动动画核心算法）" class="headerlink" title="（2）如何实现缓动效果？（缓动动画核心算法）"></a>（2）如何实现缓动效果？（缓动动画核心算法）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">答：移动距离 = （目标值 - 现在盒子位置）/ 10，靠移动距离慢慢减小直至停下，来实现缓动原理</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h4 id="代码实现：-1"><a href="#代码实现：-1" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> step = (target - obj.offsetLeft) / <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h6 id="注释：-1"><a href="#注释：-1" class="headerlink" title="注释："></a>注释：</h6><h6 id="step：移动距离-gt-元素要移动的距离"><a href="#step：移动距离-gt-元素要移动的距离" class="headerlink" title="step：移动距离 -&gt; 元素要移动的距离"></a>step：移动距离 -&gt; 元素要移动的距离</h6><h6 id="target：目标值-gt-移动到什么距离-1"><a href="#target：目标值-gt-移动到什么距离-1" class="headerlink" title="target：目标值 -&gt; 移动到什么距离"></a>target：目标值 -&gt; 移动到什么距离</h6><h6 id="obj-offsetLeft：盒子现在的位置-gt-盒子现在距离左侧的距离"><a href="#obj-offsetLeft：盒子现在的位置-gt-盒子现在距离左侧的距离" class="headerlink" title="obj.offsetLeft：盒子现在的位置 -&gt; 盒子现在距离左侧的距离"></a>obj.offsetLeft：盒子现在的位置 -&gt; 盒子现在距离左侧的距离</h6><hr>
+<h3 id="（3）为什么移动不到指定位置？（给的目标距离是500px，地洞到496-4就停下了）"><a href="#（3）为什么移动不到指定位置？（给的目标距离是500px，地洞到496-4就停下了）" class="headerlink" title="（3）为什么移动不到指定位置？（给的目标距离是500px，地洞到496.4就停下了）"></a>（3）为什么移动不到指定位置？（给的目标距离是500px，地洞到496.4就停下了）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">答：因为数据处理过程中会产生小数，需要做取整处理，正数往上取整，负数向下取整</span><br></pre></td></tr></table></figure>
+
+<h6 id=""><a href="#" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/b5be9fc9d08e49aa9500a599a439cd00.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_17,color_FFFFFF,t_70,g_se,x_16" alt="img"></h6><h4 id="代码实现：-2"><a href="#代码实现：-2" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step = step &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(step) : <span class="built_in">Math</span>.floor(step);</span><br></pre></td></tr></table></figure>
+
+<h6 id="注释：-2"><a href="#注释：-2" class="headerlink" title="注释："></a>注释：</h6><h6 id="如果step要移动的距离是正数，就向上取整，如果是负数，就向下取整，采取三元表达式以优化代码，提升整体质量"><a href="#如果step要移动的距离是正数，就向上取整，如果是负数，就向下取整，采取三元表达式以优化代码，提升整体质量" class="headerlink" title="如果step要移动的距离是正数，就向上取整，如果是负数，就向下取整，采取三元表达式以优化代码，提升整体质量"></a>如果step要移动的距离是正数，就向上取整，如果是负数，就向下取整，采取三元表达式以优化代码，提升整体质量</h6><hr>
+<h3 id="（4）如何让元素真正移动起来？"><a href="#（4）如何让元素真正移动起来？" class="headerlink" title="（4）如何让元素真正移动起来？"></a>（4）如何让元素真正移动起来？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">答：添加定时器，并将实时移动距离（步长）赋值给元素</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码实现：-3"><a href="#代码实现：-3" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">//详细实现代码 &#125;, 15);  //添加定时器</span></span><br><span class="line">obj.style.left = obj.offsetLeft + step + <span class="string">&#x27;px&#x27;</span>;  <span class="comment">//步长</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="注释：-3"><a href="#注释：-3" class="headerlink" title="注释："></a>注释：</h6><h6 id="给定时器添加名字是为了好清除定时器，时间设置为15（实际开发常用15）"><a href="#给定时器添加名字是为了好清除定时器，时间设置为15（实际开发常用15）" class="headerlink" title="给定时器添加名字是为了好清除定时器，时间设置为15（实际开发常用15）"></a>给定时器添加名字是为了好清除定时器，时间设置为15（实际开发常用15）</h6><h6 id="元素的左侧的值-元素离左侧的距离-移动距离-‘px’-（记得一定要加px单位），实现原理就是不断将最新的值赋值给元素，实现动起来的效果"><a href="#元素的左侧的值-元素离左侧的距离-移动距离-‘px’-（记得一定要加px单位），实现原理就是不断将最新的值赋值给元素，实现动起来的效果" class="headerlink" title="元素的左侧的值 = 元素离左侧的距离 + 移动距离 + ‘px’ （记得一定要加px单位），实现原理就是不断将最新的值赋值给元素，实现动起来的效果"></a>元素的左侧的值 = 元素离左侧的距离 + 移动距离 + ‘px’ （记得一定要加px单位），实现原理就是不断将最新的值赋值给元素，实现动起来的效果</h6><hr>
+<h3 id="（5）为什么盒子运动后会不规律抖动或不按照点击要求运动"><a href="#（5）为什么盒子运动后会不规律抖动或不按照点击要求运动" class="headerlink" title="（5）为什么盒子运动后会不规律抖动或不按照点击要求运动"></a>（5）为什么盒子运动后会不规律抖动或不按照点击要求运动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">答：因为定时器重复启动，需要每次调用时清除定时器</span><br></pre></td></tr></table></figure>
+
+<p>​    代码实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">clearInterval</span>(timer);</span><br></pre></td></tr></table></figure>
+
+<h6 id="注释：-4"><a href="#注释：-4" class="headerlink" title="注释："></a>注释：</h6><h6 id="特别注意两个地方需要清除，第一是刚调用缓动动画函数时，避免鬼畜和破速，第二是判断元素到达指定位置没有，如果到达了就停止定时器"><a href="#特别注意两个地方需要清除，第一是刚调用缓动动画函数时，避免鬼畜和破速，第二是判断元素到达指定位置没有，如果到达了就停止定时器" class="headerlink" title="特别注意两个地方需要清除，第一是刚调用缓动动画函数时，避免鬼畜和破速，第二是判断元素到达指定位置没有，如果到达了就停止定时器"></a>特别注意两个地方需要清除，第一是刚调用缓动动画函数时，避免鬼畜和破速，第二是判断元素到达指定位置没有，如果到达了就停止定时器</h6><hr>
+<h2 id="缓动动画函数最终封装代码（animate-js）"><a href="#缓动动画函数最终封装代码（animate-js）" class="headerlink" title="缓动动画函数最终封装代码（animate.js）"></a>缓动动画函数最终封装代码（animate.js）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">obj, target, callback</span>) </span>&#123;</span><br><span class="line">       <span class="comment">//调用函数就清除一次定时器，避免问题发生</span></span><br><span class="line"></span><br><span class="line">       <span class="built_in">clearInterval</span>(obj.timer)</span><br><span class="line">   </span><br><span class="line">       <span class="comment">//添加定时器</span></span><br><span class="line">   </span><br><span class="line">       obj.timer = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="comment">//步长值写到计时器里面  改为整数(往上取整)</span></span><br><span class="line">   </span><br><span class="line">           <span class="keyword">var</span> step = (target - obj.offsetLeft) / <span class="number">10</span>;</span><br><span class="line">   </span><br><span class="line">           <span class="comment">//整数往大了取，负数往小了取</span></span><br><span class="line">   </span><br><span class="line">           step = step &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(step) : <span class="built_in">Math</span>.floor(step);</span><br><span class="line">   </span><br><span class="line">           <span class="keyword">if</span> (obj.offsetLeft == target) &#123;</span><br><span class="line">               <span class="comment">//如果已经到达指定位置就停止定时器</span></span><br><span class="line">   </span><br><span class="line">               <span class="built_in">clearInterval</span>(obj.timer);</span><br><span class="line">   </span><br><span class="line">               <span class="comment">//回调函数写到定时器结束之后</span></span><br><span class="line">   </span><br><span class="line">               callback &amp;&amp; callback();</span><br><span class="line">   </span><br><span class="line">           &#125;</span><br><span class="line">   </span><br><span class="line">               <span class="comment">//把每次加一步长值改变为慢慢变小的值</span></span><br><span class="line">   </span><br><span class="line">               obj.style.left = obj.offsetLeft + step + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">   </span><br><span class="line">       &#125;, <span class="number">15</span>);</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<center>生命不息，学习不止，键盘敲烂，月薪过万！加油，代码人！</center>
 
       </section>
 
@@ -149,20 +168,20 @@
       
         <nav class="article-nav">
           
+          
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2021/12/05/myself/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">about chai</h2>
+        <a href="/2021/12/13/flex-father/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Flex-Father</h2>
         </a>
       
-      <div class="card-text--row">Newer</div>
+      <div class="card-text--row">Older</div>
     </div>
   </article>
 </div>
-          
           
         </nav>
       
