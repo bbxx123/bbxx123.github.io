@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+
+  
+
+  
+    <meta name="author" content="Chai chai">
+  
+
+  
+
+  
+
+  <title>chaichai.top</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.3/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/styles/monokai.css">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/mqy2.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          chaichai.top
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://blog.uimentama.com/">友链</a></li>
+        
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://music.sukoshi.xyz/">音乐盒子</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap"></h1>
+          <h2 class="title-sub-wrap">
+            <strong>Chai chai</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-04-05T08:23:53.760Z" itemprop="datePublished">2022-04-05</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <hr>
+<h2 id="title-Use-Nginx-Xshell-Xftp-Deployment-project"><a href="#title-Use-Nginx-Xshell-Xftp-Deployment-project" class="headerlink" title="title:Use Nginx+Xshell+Xftp Deployment project"></a>title:Use Nginx+Xshell+Xftp Deployment project</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">统一说明：</span><br><span class="line"></span><br><span class="line">1.购买的服务器是腾讯云的轻量服务器</span><br><span class="line"></span><br><span class="line">2.服务器的镜像系统是CentOS 8.0</span><br><span class="line"></span><br><span class="line">3.域名解析和网站备案是部署的前提</span><br><span class="line"></span><br><span class="line">4.对文章内容有疑惑或其他问题，都可以通过「about chai」或下方留言联系我</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="一、服务器购买、域名购买与ip查看"><a href="#一、服务器购买、域名购买与ip查看" class="headerlink" title="一、服务器购买、域名购买与ip查看"></a>一、服务器购买、域名购买与ip查看</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首先先购买自己的腾讯云服务器和域名，新用户或者大学生首次购买价格都会很低，买完以后到控制台就可以看到自己的服务器ip了，公网ip号一定要记牢，后面在Xshell连接和Xftp连接时都会用到</span><br></pre></td></tr></table></figure>
+
+<h3 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a><strong>情况一</strong></h3><h3 id="一般服务器：在云服务器控制台里的实例里面就能看到自己的IP地址（图片中红框）"><a href="#一般服务器：在云服务器控制台里的实例里面就能看到自己的IP地址（图片中红框）" class="headerlink" title="一般服务器：在云服务器控制台里的实例里面就能看到自己的IP地址（图片中红框）"></a>一般服务器：在云服务器控制台里的实例里面就能看到自己的IP地址（图片中红框）</h3><p><img src="https://img-blog.csdnimg.cn/c4c1c1f5d34a4a3eb55e9d90759342fa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a><strong>情况二</strong></h3><h3 id="轻量服务器（我自己在用的）：在轻量应用服务器控制台才能找到，IP地址在红框的区域"><a href="#轻量服务器（我自己在用的）：在轻量应用服务器控制台才能找到，IP地址在红框的区域" class="headerlink" title="轻量服务器（我自己在用的）：在轻量应用服务器控制台才能找到，IP地址在红框的区域"></a>轻量服务器（我自己在用的）：在轻量应用服务器控制台才能找到，IP地址在红框的区域</h3><p><img src="https://img-blog.csdnimg.cn/ea779443fb5a42cdbec36e751a25e381.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<hr>
+<h2 id="二、确认自己的服务器用户名和密码"><a href="#二、确认自己的服务器用户名和密码" class="headerlink" title="二、确认自己的服务器用户名和密码"></a><strong>二、确认自己的服务器用户名和密码</strong></h2><h3 id="1）购买服务器以后会以站内信息的方式向你发送你服务器的用户名和密码（没有请看下一步）"><a href="#1）购买服务器以后会以站内信息的方式向你发送你服务器的用户名和密码（没有请看下一步）" class="headerlink" title="1）购买服务器以后会以站内信息的方式向你发送你服务器的用户名和密码（没有请看下一步）"></a>1）购买服务器以后会以站内信息的方式向你发送你服务器的用户名和密码（没有请看下一步）</h3><p><img src="https://img-blog.csdnimg.cn/a6764b146201466e9ebbc6e035f7d67f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="2）以轻量服务器为例，登录默认是一键登录，就没有密码，需要自己手动去重置密码，记得先关机（关闭服务器，不是关你的电脑）再重置密码，重置后一定要记住"><a href="#2）以轻量服务器为例，登录默认是一键登录，就没有密码，需要自己手动去重置密码，记得先关机（关闭服务器，不是关你的电脑）再重置密码，重置后一定要记住" class="headerlink" title="2）以轻量服务器为例，登录默认是一键登录，就没有密码，需要自己手动去重置密码，记得先关机（关闭服务器，不是关你的电脑）再重置密码，重置后一定要记住"></a>2）以轻量服务器为例，登录默认是一键登录，就没有密码，需要自己手动去重置密码，记得先关机（关闭服务器，不是关你的电脑）再重置密码，重置后一定要记住</h3><h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/0ef0cb1c10a5481d9f1af5c568a38a55.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_14,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><hr>
+<h2 id="三、下载并使用Xshell"><a href="#三、下载并使用Xshell" class="headerlink" title="三、下载并使用Xshell"></a>三、下载并使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Xshell&spm=1001.2101.3001.7020">Xshell</a></h2><h3 id="1）下载和安装"><a href="#1）下载和安装" class="headerlink" title="1）下载和安装"></a><strong>1）下载和安装</strong></h3><p>下载地址：<a target="_blank" rel="noopener" href="https://www.xshellcn.com/xiazai.html">Xshell7_Xftp7,Xmanager7下载-xshellcn</a> </p>
+<p>安装步骤：傻瓜式的选个目录，然后下一步下一步就行</p>
+<p><img src="https://img-blog.csdnimg.cn/b01c056a240142108d77617c8755cd7d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="2）Xshell使用"><a href="#2）Xshell使用" class="headerlink" title="2）Xshell使用"></a><strong>2）Xshell使用</strong></h3><h3 id="1-双击打开Xshell以后，在左上角点击文件-gt-新建"><a href="#1-双击打开Xshell以后，在左上角点击文件-gt-新建" class="headerlink" title="1.双击打开Xshell以后，在左上角点击文件 -&gt; 新建"></a>1.双击打开Xshell以后，在左上角点击文件 -&gt; 新建</h3><p><img src="https://img-blog.csdnimg.cn/a633a702cae44ec3b585bfceceb70d72.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="2-然后输入名称（自定义），主机号，点击确定即可"><a href="#2-然后输入名称（自定义），主机号，点击确定即可" class="headerlink" title="2.然后输入名称（自定义），主机号，点击确定即可"></a>2.然后输入名称（自定义），主机号，点击确定即可</h3><h3 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/b87d421063a24183a0f5899ae809b3c4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_14,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><h3 id="3-之后双击新建的会话，进行密码输入"><a href="#3-之后双击新建的会话，进行密码输入" class="headerlink" title="3.之后双击新建的会话，进行密码输入"></a>3.之后双击新建的会话，进行密码输入</h3><p><img src="https://img-blog.csdnimg.cn/e5f56f93335e44aaae700b1326b2c644.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="4-在框框内输入密码（第一步里面提到的服务器密码，不是腾讯云的密码哦），点击确定，如果失败了就多试几次，出现下图就算成功（只要不error都算成功）"><a href="#4-在框框内输入密码（第一步里面提到的服务器密码，不是腾讯云的密码哦），点击确定，如果失败了就多试几次，出现下图就算成功（只要不error都算成功）" class="headerlink" title="4.在框框内输入密码（第一步里面提到的服务器密码，不是腾讯云的密码哦），点击确定，如果失败了就多试几次，出现下图就算成功（只要不error都算成功）"></a>4.在框框内输入密码（第一步里面提到的服务器密码，不是腾讯云的密码哦），点击确定，如果失败了就多试几次，出现下图就算成功（只要不error都算成功）</h3><h3 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="C:\Users\lenovo\Desktop\5837051dd1094854b75e6dfc6e1ce996.png" alt="5837051dd1094854b75e6dfc6e1ce996"><img src="https://img-blog.csdnimg.cn/08021729de3b40eaa37accafb74c71a0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><hr>
+<h2 id="四、安装并配置Nginx"><a href="#四、安装并配置Nginx" class="headerlink" title="四、安装并配置Nginx"></a>四、安装并配置<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Nginx&spm=1001.2101.3001.7020">Nginx</a></h2><h3 id="1）环境配置"><a href="#1）环境配置" class="headerlink" title="1）环境配置"></a><strong>1）环境配置</strong></h3><h3 id="gcc"><a href="#gcc" class="headerlink" title="#gcc"></a>#gcc</h3><p>gcc是linux下的编译器，可以编译 C,C++,Ada,Object C和Java等语言，一般centos7环境自带安装（轻量服务器没有，得自己安，这句话你还会在后面看到很多遍）。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> -y install gcc</span><br></pre></td></tr></table></figure>
+
+<h3 id="pcre、pcre-devel"><a href="#pcre、pcre-devel" class="headerlink" title="#pcre、pcre-devel"></a>#pcre、pcre-devel</h3><p>pcre是一个perl库，包括perl兼容的正则表达式库，nginx的http模块使用pcre来解析正则表达式。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install -y pcre pcre-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="gzip"><a href="#gzip" class="headerlink" title="#gzip"></a>#gzip</h3><p>zlib库提供了很多种压缩和解压缩方式，nginx允许使用zlib对http包的内容进行gzip，避免资源过大加载过慢（简而言之就是，如果最终访问网页的时候图片加载慢，就把这个装上，能大大减少大小）</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install -y zlib zlib-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="openssl"><a href="#openssl" class="headerlink" title="#openssl"></a>#openssl</h3><p>openssl是web安全通信的基石，必须要装</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yum</span> install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）安装Nginx"><a href="#2）安装Nginx" class="headerlink" title="2）安装Nginx"></a><strong>2）安装Nginx</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">安装方式有，直接yum安装和源码编译安装两种 ，yum简单无脑，但是终归不是自己亲手放在某个地方，使用和找起来会比较繁琐，所以以下案例采用的是源码编译安装（把需要的东西，安装在自己指定的地方）</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-新建并切换至nginx目录，选择的路径是-usr-local"><a href="#1-新建并切换至nginx目录，选择的路径是-usr-local" class="headerlink" title="1.新建并切换至nginx目录，选择的路径是/usr/local"></a>1.新建并切换至nginx目录，选择的路径是/usr/local</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mkdir</span> /usr/local/nginx &amp;&amp; cd /usr/local/nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-用weget方法从官网下载nginx，以nginx-1-21-3-tar-gz为例（轻量服务器没有自带weget方法，得自己配，代码：yum-y-install-weget）"><a href="#2-用weget方法从官网下载nginx，以nginx-1-21-3-tar-gz为例（轻量服务器没有自带weget方法，得自己配，代码：yum-y-install-weget）" class="headerlink" title="2.用weget方法从官网下载nginx，以nginx-1.21.3.tar.gz为例（轻量服务器没有自带weget方法，得自己配，代码：yum -y install weget）"></a>2.用weget方法从官网下载nginx，以nginx-1.21.3.tar.gz为例（轻量服务器没有自带weget方法，得自己配，代码：yum -y install weget）</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wget</span> http://nginx.org/download/nginx-1.21.3.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-在nginx目录下解压，顺便cd进入到解压后的文件中"><a href="#3-在nginx目录下解压，顺便cd进入到解压后的文件中" class="headerlink" title="3.在nginx目录下解压，顺便cd进入到解压后的文件中"></a>3.在nginx目录下解压，顺便cd进入到解压后的文件中</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tar</span> -zxvf nginx-<span class="number">1</span>.<span class="number">21</span>.<span class="number">3</span>.tar.gz</span><br><span class="line">cd nginx-<span class="number">1</span>.<span class="number">21</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-编译源码文件"><a href="#4-编译源码文件" class="headerlink" title="4.编译源码文件"></a>4.编译源码文件</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-安装ssl模块（是配置https所必须的模块）"><a href="#5-安装ssl模块（是配置https所必须的模块）" class="headerlink" title="5.安装ssl模块（是配置https所必须的模块）"></a>5.安装ssl模块（是配置https所必须的模块）</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="attribute">configure</span> --with-http_ssl_module</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-执行安装命令"><a href="#6-执行安装命令" class="headerlink" title="6.执行安装命令"></a>6.执行安装命令</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">make</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-在nginx目录下给nginx添加环境变量文件（能在任何地方调用，很方便）"><a href="#7-在nginx目录下给nginx添加环境变量文件（能在任何地方调用，很方便）" class="headerlink" title="7.在nginx目录下给nginx添加环境变量文件（能在任何地方调用，很方便）"></a>7.在nginx目录下给nginx添加环境变量文件（能在任何地方调用，很方便）</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /etc/profile.d/nginx.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这时候，会打开linux的编辑器，很多第一次见到的同学会很懵，敲完配置文件内容以后（export PATH=$PATH:/usr/local/nginx/sbin），输入&quot;:wq&quot;，保存并退出就添加好了（&quot;:q!&quot;是不保存退出）</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/beb1e8e452f646698260ec552072597f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="8-重启服务器"><a href="#8-重启服务器" class="headerlink" title="8.重启服务器"></a>8.重启服务器</h3><h3 id="9-将nginx注册为系统服务并开机自启动（根据自己需求决定是否配置）"><a href="#9-将nginx注册为系统服务并开机自启动（根据自己需求决定是否配置）" class="headerlink" title="9.将nginx注册为系统服务并开机自启动（根据自己需求决定是否配置）"></a>9.将nginx注册为系统服务并开机自启动（根据自己需求决定是否配置）</h3><p>新建nginx服务配置文件</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
+
+<p>内容，同样，敲好以后:wq保存就好了</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=<span class="attribute">The</span> Nginx HTTP and reverse proxy server</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line"><span class="comment"># </span></span><br><span class="line">PIDFile=/run/nginx.pid</span><br><span class="line"><span class="comment"># </span></span><br><span class="line">ExecStartPre=/usr/bin/rm -f /run/nginx.pid	</span><br><span class="line"><span class="comment"># </span></span><br><span class="line">ExecStartPre=/usr/local/nginx/sbin/nginx -t -q</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -g <span class="string">&quot;pid /run/nginx.pid;&quot;</span></span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -t -q</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload -g <span class="string">&quot;pid /run/nginx.pid;&quot;</span></span><br><span class="line">ExecStop=/bin/kill -s HUP $MAINPID</span><br><span class="line">KillSignal=SIGQUIT</span><br><span class="line">TimeoutStopSec=<span class="number">5</span></span><br><span class="line">KillMode=process</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>注册为开机启动</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl</span> enable nginx</span><br></pre></td></tr></table></figure>
+
+<p>启动nginx服务</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl</span> start nginx</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、下载Xftp和使用Xftp"><a href="#三、下载Xftp和使用Xftp" class="headerlink" title="三、下载Xftp和使用Xftp"></a>三、下载Xftp和使用Xftp</h2><h3 id="1）下载和安装-1"><a href="#1）下载和安装-1" class="headerlink" title="1）下载和安装"></a><strong>1）下载和安装</strong></h3><p>下载地址：<a target="_blank" rel="noopener" href="https://www.xshellcn.com/xiazai.html">Xshell7_Xftp7,Xmanager7下载-xshellcn</a> </p>
+<p>安装步骤：傻瓜式的选个目录，然后下一步下一步就行</p>
+<p><img src="https://img-blog.csdnimg.cn/971ec66f2e114f9886eaea2bcd255a01.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="2）Xftp使用"><a href="#2）Xftp使用" class="headerlink" title="2）Xftp使用"></a><strong>2）Xftp使用</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">安装完成后双击打开软件，左上角新建会话输入用户名和密码，本质上和 Xshell是一样的（毕竟是一家的），所以步骤就不再赘述。连接成功后，左边部分为你自己的电脑，右边为服务器</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/55a5d0ef930d49bd9c5a87f4e503bfb2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="1-在本地找到要上传的项目，在服务器的-usr目录下建立一个文件夹（不要有中文），并把要上传的文件拖到右侧"><a href="#1-在本地找到要上传的项目，在服务器的-usr目录下建立一个文件夹（不要有中文），并把要上传的文件拖到右侧" class="headerlink" title="1.在本地找到要上传的项目，在服务器的/usr目录下建立一个文件夹（不要有中文），并把要上传的文件拖到右侧"></a>1.在本地找到要上传的项目，在服务器的/usr目录下建立一个文件夹（不要有中文），并把要上传的文件拖到右侧</h3><h3 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/10236d2e2b4d44738c82d281ed4c210a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><h3 id="2-转回到Xshell的命令界面，开始新建配置文件目录，在nginx目录下的conf文件夹新建目录"><a href="#2-转回到Xshell的命令界面，开始新建配置文件目录，在nginx目录下的conf文件夹新建目录" class="headerlink" title="2. 转回到Xshell的命令界面，开始新建配置文件目录，在nginx目录下的conf文件夹新建目录"></a>2. 转回到Xshell的命令界面，开始新建配置文件目录，在nginx目录下的conf文件夹新建目录</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span> /usr/local/nginx/conf</span><br><span class="line">mkdir vhost</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-用Xftp打开目录-usr-local-nginx-conf，找到nginx-conf，右键选择用记事本打开"><a href="#3-用Xftp打开目录-usr-local-nginx-conf，找到nginx-conf，右键选择用记事本打开" class="headerlink" title="3. 用Xftp打开目录/usr/local/nginx/conf，找到nginx.conf，右键选择用记事本打开"></a>3. 用Xftp打开目录/usr/local/nginx/conf，找到nginx.conf，右键选择用记事本打开</h3><h3 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/befb0a8696d1450b81611d5b4eff1e8b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><h3 id="4-在http的括号里面，添加include-vhost-conf-并保存"><a href="#4-在http的括号里面，添加include-vhost-conf-并保存" class="headerlink" title="4.在http的括号里面，添加include vhost/*.conf;并保存"></a>4.在http的括号里面，添加include vhost/*.conf;并保存</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">include</span> vhost/<span class="regexp">*.conf</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/b1ccf6caeb6946b89db7f8a2dc461ae7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_18,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h3 id="5-切换到vhost目录下"><a href="#5-切换到vhost目录下" class="headerlink" title="5.切换到vhost目录下"></a>5.切换到vhost目录下</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span> vhost</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-新建站点配置文件（域名-端口号命名）"><a href="#6-新建站点配置文件（域名-端口号命名）" class="headerlink" title="6.新建站点配置文件（域名 + 端口号命名）"></a>6.新建站点配置文件（域名 + 端口号命名）</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> fazixinxikeji.com.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-配置内容，-wq保存退出"><a href="#7-配置内容，-wq保存退出" class="headerlink" title="7.配置内容，:wq保存退出"></a>7.配置内容，:wq保存退出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注：server_name 后面跟的是目标域名</span><br><span class="line"></span><br><span class="line">    root 后面跟的是项目存放的位置</span><br><span class="line"></span><br><span class="line">    try_files xxxxxxx 后面跟的是域名一访问，想看到的页面</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="attribute">server_name</span> fazixinxikeji.com;</span><br><span class="line"> </span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="attribute">root</span> /usr/fazikeji/fazi;</span><br><span class="line">        <span class="attribute">try_files</span> $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-重启nginx，访问域名"><a href="#8-重启nginx，访问域名" class="headerlink" title="8.重启nginx，访问域名"></a>8.重启nginx，访问域名</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemclt</span> reload nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-访问成功"><a href="#9-访问成功" class="headerlink" title="9.访问成功"></a>9.访问成功</h3><h3 id="-5"><a href="#-5" class="headerlink" title=""></a><img src="https://img-blog.csdnimg.cn/f8e8f71b500645aca5ccfc6594a3ec81.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5ZK46bG85p-05Lmf5pyJ5aSn5Y6C5qKm,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></h3><hr>
+<center>生命不息，学习不止，键盘敲烂，月薪过万，加油，代码人！ </center>
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2022/04/05/Node%20Solutions%20to%20common%20problems/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Node Solutions to common problems</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+    <div class="valine-container comments-container content-padding--primary soft-size--large soft-style--box">
+      <div id="valine_thread" class="valine-thread"></div>
+    </div>
+    <script type="text/javascript" src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script type="text/javascript" src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script type="text/javascript">
+      new Valine({
+        el: "#valine_thread",
+        appId: "wnlMzarUChM4Y1YTeSYAtvgD-gzGzoHsz",
+        appKey: "1cU6auMLfIh3gDvtJVaTvlrw",
+        avatar: "mm",
+        placeholder: "随便说点什么～",
+        notify: true,
+        visitor: true,
+        pageSize: 10,
+      });
+    </script>
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/touxiang.png" class="soft-size--round soft-style--box" alt="Chaichai">
+    
+    
+      <h2>Chaichai</h2>
+    
+    
+      <p>键盘敲烂，月薪过万</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>5</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>我的肉身在尘世中腐烂，我的灵魂在万物中生长，所以我的一生宜理想，宜浪漫，忌平庸</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/bbxx123/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://blog.csdn.net/bbxx_lzx?spm=1000.2115.3001.5343" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-csdn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 1024C229.2224 1024 0 794.7776 0 512 0 229.2224 229.2224 0 512 0c282.7776 0 512 229.2224 512 512 0 282.7776-229.2224 512-512 512z m17.066667-413.525333c34.850133 4.352 68.778667 5.12 102.741333 2.0992 23.04-2.048 44.817067-8.362667 64.170667-21.9136 38.212267-26.794667 49.783467-85.1968 24.251733-123.050667-14.626133-21.7088-36.8128-30.344533-60.757333-35.498667-35.054933-7.543467-70.4512-5.751467-105.847467-3.413333-5.666133 0.3584-6.7584 3.072-7.236267 8.209067-3.072 32.682667-6.536533 65.314133-9.813333 97.962666-2.5088 24.814933-4.932267 49.629867-7.509333 75.605334z m53.4016-33.928534c1.962667-20.906667 3.6352-39.338667 5.4272-57.770666 1.553067-15.906133 3.413333-31.778133 4.727466-47.701334 0.3584-4.283733 1.553067-6.656 5.956267-6.382933 15.616 1.041067 31.709867 0.034133 46.728533 3.652267 36.488533 8.823467 48.725333 54.306133 23.3472 83.029333-15.8208 17.902933-36.7616 23.586133-59.255466 25.088-8.465067 0.546133-17.015467 0.085333-26.9312 0.085333zM512 434.295467c-2.184533-0.648533-3.5328-1.1776-4.932267-1.4336-37.717333-6.877867-75.690667-8.328533-113.646933-2.816-20.974933 3.037867-41.0112 9.489067-57.480533 23.330133-22.9888 19.319467-21.640533 46.848 4.4032 62.0032 13.056 7.594667 28.023467 12.509867 42.5984 17.288533 14.08 4.608 28.996267 6.826667 43.144533 11.264 12.5952 3.925333 14.011733 14.318933 3.584 22.306134-3.345067 2.56-7.441067 5.085867-11.537067 5.751466-11.195733 1.826133-22.698667 4.386133-33.826133 3.566934-24.098133-1.774933-48.042667-5.461333-72.5504-8.430934-1.365333 10.615467-2.935467 23.0912-4.5568 35.9424 4.181333 1.365333 7.68 2.730667 11.264 3.618134 33.9456 8.4992 68.386133 9.608533 102.912 5.12 20.087467-2.6112 39.4752-7.901867 56.695467-19.029334 28.603733-18.4832 36.693333-57.1904-4.676267-75.383466-14.506667-6.382933-30.190933-10.410667-45.482667-15.086934-11.4176-3.4816-23.313067-5.614933-34.525866-9.5232-9.7792-3.413333-11.144533-12.202667-3.037867-18.397866 4.6592-3.549867 10.717867-6.997333 16.384-7.3728a480.853333 480.853333 0 0 1 53.384533-0.853334c15.377067 0.699733 30.651733 3.549867 46.4896 5.5296L512 434.295467z m257.143467 2.048L750.933333 614.2976h54.152534c4.778667-45.636267 9.710933-90.7264 14.062933-135.8848 0.6144-6.365867 2.3552-8.840533 8.686933-9.0112 11.434667-0.273067 22.8864-1.979733 34.286934-1.570133 23.722667 0.853333 42.3936 9.728 38.4 43.264-2.901333 24.2688-5.597867 48.571733-8.2432 72.874666-1.092267 10.069333-1.826133 20.189867-2.730667 30.4128h55.330133c3.584-35.259733 7.9872-70.058667 10.496-104.994133 3.413333-47.4624-17.7664-73.3184-64.682666-80.213333-40.96-6.007467-81.339733-0.341333-121.5488 7.133866z m-483.498667 134.6048c-8.738133 1.297067-16.384 2.798933-24.098133 3.4816-25.6512 2.235733-51.319467 3.9424-76.305067-4.266667-13.909333-4.590933-24.6784-12.578133-29.7984-25.9584-7.901867-20.701867 0.887467-47.104 19.831467-60.3136 17.373867-12.117333 37.717333-15.9232 58.453333-15.9232 22.545067-0.017067 45.090133 2.423467 68.232533 3.84L307.2 432.298667c-15.069867-1.723733-29.4912-3.925333-43.997867-4.9152-41.0112-2.798933-80.64 2.6112-117.469866 20.462933-30.020267 14.557867-52.053333 36.010667-58.6752 68.130133-7.850667 38.144 11.537067 69.495467 51.7632 85.845334 19.1488 7.765333 39.287467 12.509867 60.0064 12.5952 24.746667 0.1024 49.493333-1.570133 74.205866-2.952534 3.106133-0.170667 8.311467-2.901333 8.669867-5.034666 1.979733-11.554133 2.730667-23.278933 3.9424-35.464534z"></path>
+</svg>
+          </a>
+        
+      
+        
+      
+    </div>
+     
+    <p>&copy; 2022 <a href="/" target="_blank">Chai chai</a></p>
+
+    
+      <p><a href="https://beian.miit.gov.cn" target="_blank">滇ICP备2022000365号</a></p>
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-izumi"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
